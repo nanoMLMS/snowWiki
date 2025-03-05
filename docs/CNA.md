@@ -22,7 +22,7 @@ The common neighbour analysis is a signature attributed to all pairs of nearest 
 
 As said, the CNA signature is a pair property, in pySNOW we can compute the CNA for each pair of atom and obtain it as an $3\cdot N_{pairs}$ array where for each pair the subarray contains the (r, s, t) values, optionally the function will also return a list containing the indeces of the atoms forming each pair for which the CNA signature has been computed, this can be used (and is used by other fnctions which we will present below) to identify patterns in the observed CNA signatures.
 
-The method to co,pute the CNA involves, as always, as a first step, the reading of the coordinates of the atoms:
+The method to compute the CNA involves, as always, as a first step, the reading of the coordinates of the atoms, then the function `#!python calculate_cna(...)` can be used to obtain the desired output:
 
 === "Using pySNOW io"
 
@@ -56,3 +56,19 @@ The method to co,pute the CNA involves, as always, as a first step, the reading 
     2. The first 1 is the index_frame placeholder. Setting *return_pair* to **True** will return the indeces of the atoms forming each pair
 
 === "Using Ovito io"
+
+    ```py linenums="1"
+    from from ovito.io import import_file
+
+    from snow.lodispp.cna import calculate_cna
+
+    pipeline = import_file("Au976To.xyz")
+
+    coords = nano.get_positions()
+
+    cut_off = 4.079 * 0.85 # (1)
+    n_pairs, cnas, pairs = calculate_cna(1, coords, cut_off, return_pair = True) # (2)
+    ```
+
+    1. Cutoff as 0.85*lattice parameter
+    2. The first 1 is the index_frame placeholder. Setting *return_pair* to **True** will return the indeces of the atoms forming each pair
