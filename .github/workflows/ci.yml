@@ -18,7 +18,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install pySNOW package from GitHub
-        run: pip install git+https://github.com/your-username/pySNOW.git
+        run: pip install git+https://github.com/nanoMLMS/pySNOW.git
 
       - name: Install dependencies for snow_wiki
         run: pip install mkdocs mkdocs-material mkdocstrings[python]
