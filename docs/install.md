@@ -41,3 +41,6 @@ pytest .
 ```
 from the pysnow folder.
 
+Requirments for pYSNOW are [NumPy](https://numpy.org/) and [SciPy](https://scipy.org/), which are automatically installed with pySNOW, addiotional optional dependencies are:
+
+- [tqdm](https://tqdm.github.io/) for progress bars to check progress of long computations
