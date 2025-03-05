@@ -30,6 +30,7 @@ theme:
 
 nav:
   - Home: index.md
+  - About: about.md
   - Tutorials:
     - Installation: install.md
     - Single Atom Descriptors:
@@ -83,5 +84,5 @@ plugins:
 extra_javascript:
   - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
-copyright: Copyright &copy; 2025 naoMLMS
+copyright: Copyright &copy; 2025 nanoMLMS
 site_dir: site
