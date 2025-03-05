@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies for snow_wiki
         run: pip install mkdocs mkdocs-material mkdocstrings[python]
 
-      - name: Build and deploy MkDocs site
+      - name: Build and deploy MkDocs site.
         env:
           PYTHONPATH: ${{ github.workspace }}
         run: |
