@@ -979,7 +979,7 @@
 </div>
 <h2 id="computing-the-pair-cna-signature">Computing the pair CNA Signature</h2>
 <p>As said, the CNA signature is a pair property, in pySNOW we can compute the CNA for each pair of atom and obtain it as an <span class="arithmatex">\(3\cdot N_{pairs}\)</span> array where for each pair the subarray contains the (r, s, t) values, optionally the function will also return a list containing the indeces of the atoms forming each pair for which the CNA signature has been computed, this can be used (and is used by other fnctions which we will present below) to identify patterns in the observed CNA signatures.</p>
-<p>The method to co,pute the CNA involves, as always, as a first step, the reading of the coordinates of the atoms:</p>
+<p>The method to compute the CNA involves, as always, as a first step, the reading of the coordinates of the atoms, then the function <code class="language-python highlight"><span class="n">calculate_cna</span><span class="p">(</span><span class="o">...</span><span class="p">)</span></code> can be used to obtain the desired output:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Using pySNOW io</label><label for="__tabbed_2_2">Using ASE io</label><label for="__tabbed_2_3">Using Ovito io</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -1024,7 +1024,32 @@
 <li>The first 1 is the index_frame placeholder. Setting <em>return_pair</em> to <strong>True</strong> will return the indeces of the atoms forming each pair</li>
 </ol>
 </div>
-<div class="tabbed-block"></div>
+<div class="tabbed-block">
+<div class="language-py highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">from</span> <span class="n">ovito</span><span class="o">.</span><span class="n">io</span> <span class="kn">import</span><span class="w"> </span><span class="nn">import_file</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">snow.lodispp.cna</span><span class="w"> </span><span class="kn">import</span> <span class="n">calculate_cna</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="n">pipeline</span> <span class="o">=</span> <span class="n">import_file</span><span class="p">(</span><span class="s2">&quot;Au976To.xyz&quot;</span><span class="p">)</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="n">coords</span> <span class="o">=</span> <span class="n">nano</span><span class="o">.</span><span class="n">get_positions</span><span class="p">()</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="n">cut_off</span> <span class="o">=</span> <span class="mf">4.079</span> <span class="o">*</span> <span class="mf">0.85</span> <span class="c1"># (1)</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="n">n_pairs</span><span class="p">,</span> <span class="n">cnas</span><span class="p">,</span> <span class="n">pairs</span> <span class="o">=</span> <span class="n">calculate_cna</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">cut_off</span><span class="p">,</span> <span class="n">return_pair</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="c1"># (2)</span>
+</span></code></pre></div></td></tr></table></div>
+<ol>
+<li>Cutoff as 0.85*lattice parameter</li>
+<li>The first 1 is the index_frame placeholder. Setting <em>return_pair</em> to <strong>True</strong> will return the indeces of the atoms forming each pair</li>
+</ol>
+</div>
 </div>
 </div>
 
