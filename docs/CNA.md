@@ -8,7 +8,7 @@ The common neighbour analysis is a signature attributed to all pairs of nearest 
     * t: Longest path along connected bonds between the r neighbours (excluding pair)
 
 === "Detailed Description"
-
-    * Sed sagittis eleifend rutrum
-    * Donec vitae suscipit est
-    * Nulla tempor lobortis orci
+    * r: Number of shared neighbours of the pair
+    ![Image title](assets/cna_r.png){ align=left }
+    * s: Number of bonds between the r nieghbours (excluding pair)
+    * t: Longest path along connected bonds between the r neighbours (excluding pair)
