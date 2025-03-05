@@ -26,33 +26,33 @@ The method to co,pute the CNA involves, as always, as a first step, the reading 
 
 === "Using pySNOW io"
 
-```py linenumber="1"
-from snow.lodispp.pp_io import read_xyz
-from snow.lodispp.cna import calculate_cna
+    ```py linenums="1"
+    from snow.lodispp.pp_io import read_xyz
+    from snow.lodispp.cna import calculate_cna
 
-el, coords = read_xyz("Au976To.xyz")
-cut_off = 4.079 * 0.85 # (1)
-n_pairs, cnas, pairs = calculate_cna(1, coords, cut_off, return_pair = True) # (2)
-```
+    el, coords = read_xyz("Au976To.xyz")
+    cut_off = 4.079 * 0.85 # (1)
+    n_pairs, cnas, pairs = calculate_cna(1, coords, cut_off, return_pair = True) # (2)
+    ```
 
-1. Cutoff as 0.85*lattice parameter
-2. The first 1 is the index_frame placeholder. Setting *return_pair* to **True** will return the indeces of the atoms forming each pair
+    1. Cutoff as 0.85*lattice parameter
+    2. The first 1 is the index_frame placeholder. Setting *return_pair* to **True** will return the indeces of the atoms forming each pair
 
 === "Using ASE io"
 
-```py linenumber="1"
-from ase.io import read
-from snow.lodispp.cna import calculate_cna
+    ```py linenums="1"
+    from ase.io import read
+    from snow.lodispp.cna import calculate_cna
 
-nano = read("Au976To.xyz")
+    nano = read("Au976To.xyz")
 
-coords = nano.get_positions()
+    coords = nano.get_positions()
 
-cut_off = 4.079 * 0.85 # (1)
-n_pairs, cnas, pairs = calculate_cna(1, coords, cut_off, return_pair = True) # (2)
-```
+    cut_off = 4.079 * 0.85 # (1)
+    n_pairs, cnas, pairs = calculate_cna(1, coords, cut_off, return_pair = True) # (2)
+    ```
 
-1. Cutoff as 0.85*lattice parameter
-2. The first 1 is the index_frame placeholder. Setting *return_pair* to **True** will return the indeces of the atoms forming each pair
+    1. Cutoff as 0.85*lattice parameter
+    2. The first 1 is the index_frame placeholder. Setting *return_pair* to **True** will return the indeces of the atoms forming each pair
 
 === "Using Ovito io"
