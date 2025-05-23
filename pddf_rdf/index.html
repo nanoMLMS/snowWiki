@@ -509,6 +509,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="PDDF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pddf-by-element" class="md-nav__link">
+    <span class="md-ellipsis">
+      PDDF By Element
+    </span>
+  </a>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1016,6 +1040,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="PDDF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pddf-by-element" class="md-nav__link">
+    <span class="md-ellipsis">
+      PDDF By Element
+    </span>
+  </a>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1046,7 +1094,41 @@
 <h1 id="distribution-functions">Distribution Functions</h1>
 <p>Distribution funtions are useful for identifying how atoms are ddistributed spatially, pySNOW allows for the computation of two such descriptors, the PDDF<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> and the RDF<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>, for both of these descriptors it is also possible to evaluate such descriptors globally for all atoms or a chemical distribution function, which will isolate distribution of atoms of the same chemical species.</p>
 <h2 id="pddf">PDDF</h2>
-<p>The PDDF is computed as a binning of the distances between all pairs of atoms inside the system</p>
+<p>The PDDF is computed as a binning of the distances between all pairs of atoms inside the system. Snow allows for the computation of the PPDF choosing either the number of bins or the size of the indivisual bins, the function itself has the following parameters_</p>
+<ul>
+<li>index_frame (integer): useful mostly for analysing trajectories and keeping track of the frame number, if dealing with a snapshot just assign it as 1</li>
+<li>coords (array): the array of coordinates of the atoms for the snapshot/ trajectory frame</li>
+<li>bin_precision (float): size of the individual bin in Angstrom</li>
+<li>bin_count (integer): the number of bins</li>
+</ul>
+<p>Note that only one of the final two parameters has to be specified, the other is computed automatically starting from the specified one and the size of the system:</p>
+<div class="arithmatex">\[
+l_{bin} = d_{max} / N_{bins}
+\]</div>
+<p>specifying both will favour bin_precision as it is the dirst to be considered in an if statement in the code.</p>
+<h3 id="usage-example">Usage example</h3>
+<p>In this snippet we will compute the PDDF for a 561 atoms large cluster of gold atoms.</p>
+<div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">pddf.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">snow.lodispp.pp_io</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_xyz</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">snow.descriptors.gcn</span><span class="w"> </span><span class="kn">import</span> <span class="n">agcn_calculator</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1"># read a structure from an xyz file to a list of elements</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="c1"># and array of coordinates</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="n">el</span><span class="p">,</span> <span class="n">coords</span> <span class="o">=</span> <span class="n">read_xyz</span><span class="p">(</span><span class="s2">&quot;Au561_Ih.xyz&quot;</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>after reading the coordinates we compute the PDDF, the function has two returns:
+- The interatomic distance array with the equivalent distance for each bin
+- The number of pairs separated by an interatomic distance within each bin</p>
+<p>Here we use a bin_prescision of 0.01 Angstrom and then plot the distribution
+<div class="language-py highlight"><span class="filename">pddf.py linenums=</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">dist</span><span class="p">,</span> <span class="n">count</span> <span class="o">=</span> <span class="n">pddf_calculator</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">bin_precision</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+</span></code></pre></div></p>
+<h2 id="pddf-by-element">PDDF By Element</h2>
 <h2 id="rdf">RDF</h2>
 <p>The RDF is a distribution</p>
 <div class="footnote">
