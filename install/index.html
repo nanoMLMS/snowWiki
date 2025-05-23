@@ -988,17 +988,18 @@
 </div>
 </div>
 </div>
+<p>Note that pySNOW b default requires a version of python &gt;= 3.12, however users can optionally try to change this in the <strong>pyproject.toml</strong> file, this however has not been tried and might result in unwanted behaviour.</p>
 <p>After creating and activating the virtual environment you can clone the repository (or download the code as a zip and uncompressing it in any deisred location):</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/nanoMLMS/pySNOW.git<span class="w"> </span>pysnow<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>pysnow
 </span></code></pre></div>
-<p>From here you should be able to easily install the package by running 
+<p>From here you should be able to easily install the package by running:
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pip<span class="w"> </span>install<span class="w"> </span>.
 </span></code></pre></div></p>
 <p>Automated tests can be run using pytest with the following command:
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>pytest<span class="w"> </span>.
 </span></code></pre></div>
 from the pysnow folder.</p>
-<p>Requirments for pYSNOW are <a href="https://numpy.org/">NumPy</a> and <a href="https://scipy.org/">SciPy</a>, which are automatically installed with pySNOW, addiotional optional dependencies are:</p>
+<p>Requirments for pYSNOW are <a href="https://numpy.org/">NumPy</a> and <a href="https://scipy.org/">SciPy</a>, which are automatically installed with pySNOW, additional optional dependencies are:</p>
 <ul>
 <li><a href="https://tqdm.github.io/">tqdm</a> for progress bars to check progress of long computations</li>
 </ul>
