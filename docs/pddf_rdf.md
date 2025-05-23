@@ -8,7 +8,7 @@ The PDDF is computed as a binning of the distances between all pairs of atoms in
 
 ## RDF
 
-The RDF 
+The RDF is a distribution
 
 
 [^1]: Pair Distance Distribution Function
