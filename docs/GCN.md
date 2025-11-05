@@ -45,6 +45,12 @@ write_xyz("Au561_Ih_aGCN.py", el, coords, additional_data=agcn)
 
 1. It is necessary to reshape the array into a column to save it to the xyz
 
+### Optional parameters to the aGCN
+
+The aGCN can be computed with some optional parameters, these can be passed as a dictionary to the function. These include the possibility to compute the 
+aGCN only for superficial atoms by setting a threshold on the coordination number through the 'thr_cn' parameter and the possibility of computing the 
+strained aGCN by setting the 'strain' parameter to True and setting the 'dbulk' parameter to the interatomic distances of the atoms in the bulk.
+
 ## Bridge GCN
 
 While the aGCN can be seen as an atomic descriptor, the GCN itself is, as mentioned in the beginning, a useful descriptor related to adsorption sites, and these can also be located between atoms. The simplest conceptually is the bridge site, located at the midpoint between a pair of atoms.

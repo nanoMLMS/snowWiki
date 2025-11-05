@@ -23,6 +23,7 @@ The first step (suggested) is to create a python environment for installation to
     python -m venv snowenv
     .\snowenv\Scripts\activate
     ```
+Note that pySNOW b default requires a version of python >= 3.12, however users can optionally try to change this in the **pyproject.toml** file, this however has not been tried and might result in unwanted behaviour.
 
 After creating and activating the virtual environment you can clone the repository (or download the code as a zip and uncompressing it in any deisred location):
 
@@ -30,7 +31,7 @@ After creating and activating the virtual environment you can clone the reposito
 git clone https://github.com/nanoMLMS/pySNOW.git pysnow && cd pysnow
 ```
 
-From here you should be able to easily install the package by running 
+From here you should be able to easily install the package by running:
 ```bash
 pip install .
 ```
@@ -41,6 +42,6 @@ pytest .
 ```
 from the pysnow folder.
 
-Requirments for pYSNOW are [NumPy](https://numpy.org/) and [SciPy](https://scipy.org/), which are automatically installed with pySNOW, addiotional optional dependencies are:
+Requirments for pYSNOW are [NumPy](https://numpy.org/) and [SciPy](https://scipy.org/), which are automatically installed with pySNOW, additional optional dependencies are:
 
 - [tqdm](https://tqdm.github.io/) for progress bars to check progress of long computations

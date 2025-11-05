@@ -72,3 +72,28 @@ The method to compute the CNA involves, as always, as a first step, the reading 
 
     1. Cutoff as 0.85*lattice parameter
     2. The first 1 is the index_frame placeholder. Setting *return_pair* to **True** will return the indeces of the atoms forming each pair
+
+CNAPs are described in the following table, also available in the readme of the library:
+
+#### **CNAp Index Descriptions**  
+
+| **CNAp** | **Description**                                      | **CNAp composition** |
+|:--------:|------------------------------------------------------|:--------:|
+| 1        | Vertex between two (111) facets and a (100) facet    |[(1, (100)), (2, (211)), (1, (322)), (1, (422))] |
+| 2        | Edge between (100) and a slightly distorted (111)    |[(1, (200)), (2, (211)), (2, (311)), (1, (421))] |
+| 3        | Atoms lying on a (555) symmetry axis                 |[(10, (422)), (2, (555))] |
+| 4        | FCC bulk                                             |[(12, (421))] |
+| 5        | Intersection of six five-fold axes                   |[(12, (555))] |
+| 6        | Edge between (100) facets                            |[(2, (100)), (2, (211)), (2, (422))] |
+| 7        | Vertex on twinning planes shared by (111) facets     |[(2, (200)), (1, (300)), (2, (311)), (1, (322)), (1, (422))] |
+| 8        | Edge between (111) re-entrances and (111) facets     |[(2, (200)), (4, (311)), (1, (421))] |
+| 9        | Re-entrance delimited by (111) facets                |[(2, (300)), (4, (311)), (2, (421)), (2, (422))] |
+| 10       | Edge between (100) and (111) facets                  |[(3, (211)), (2, (311)), (2, (421))] |
+| 11       | Vertex shared by (100) and (111) facets              |[(4, (211)), (1, (421))] |
+| 12       | (100) facet                                          |[(4, (211)), (4, (421))] |
+| 13       | Five-fold symmetry axis (without center)             |[(4, (311)), (2, (322)), (2, (422))] |
+| 14       | Five-fold vertex                                     |[(5, (322)), (1, (555))] |
+| 15       | (111) face                                           |[(6, (311)), (3, (421))] |
+| 16       | Twinning plane                                       |[(6, (421)), (6, (422))] |
+
+Ovito users can also make use of our Ovito modifier [CNAPatterner](https://github.com/nanoMLMS/CNAPatternerOvito/) which provides a similar kind of analysis. While Ovito pipelines are generally tricky to deal with in python, using it is advisable when treating with larger systems and/or systems with periodic boundary conditions.
