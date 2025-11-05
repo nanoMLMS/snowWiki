@@ -421,6 +421,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Atop GCN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optional-parameters-to-the-agcn" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional parameters to the aGCN
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1016,6 +1031,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Atop GCN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optional-parameters-to-the-agcn" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional parameters to the aGCN
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1094,6 +1124,10 @@ and potentially be used inlater version to automate anlysis of a trajectory </li
 <ol>
 <li>It is necessary to reshape the array into a column to save it to the xyz</li>
 </ol>
+<h3 id="optional-parameters-to-the-agcn">Optional parameters to the aGCN</h3>
+<p>The aGCN can be computed with some optional parameters, these can be passed as a dictionary to the function. These include the possibility to compute the 
+aGCN only for superficial atoms by setting a threshold on the coordination number through the 'thr_cn' parameter and the possibility of computing the 
+strained aGCN by setting the 'strain' parameter to True and setting the 'dbulk' parameter to the interatomic distances of the atoms in the bulk.</p>
 <h2 id="bridge-gcn">Bridge GCN</h2>
 <p>While the aGCN can be seen as an atomic descriptor, the GCN itself is, as mentioned in the beginning, a useful descriptor related to adsorption sites, and these can also be located between atoms. The simplest conceptually is the bridge site, located at the midpoint between a pair of atoms.</p>
 <p>The computation of the bGCN is similar to that of the aGCN, however here the average is over the CNs of the atoms that are neighbours of both atoms taken once, the weight, <span class="arithmatex">\(CN_{max}\)</span> is in this case 18 for fcc.</p>
