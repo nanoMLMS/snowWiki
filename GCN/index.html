@@ -1093,8 +1093,8 @@
 <span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-0-10">10</a></span>
 <span class="normal"><a href="#__codelineno-0-11">11</a></span>
-<span class="normal"><a href="#__codelineno-0-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">snow.lodispp.pp_io</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_xyz</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">snow.descriptors.gcn</span><span class="w"> </span><span class="kn">import</span> <span class="n">agcn_calculator</span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">snow.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_xyz</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">snow.descriptors.coordination</span><span class="w"> </span><span class="kn">import</span> <span class="n">agcn_calculator</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1"># read a structure from an xyz file to a list of elements</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="c1"># and array of coordinates</span>
@@ -1115,7 +1115,7 @@ and potentially be used inlater version to automate anlysis of a trajectory </li
 <span class="normal"><a href="#__codelineno-1-14">14</a></span>
 <span class="normal"><a href="#__codelineno-1-15">15</a></span>
 <span class="normal"><a href="#__codelineno-1-16">16</a></span>
-<span class="normal"><a href="#__codelineno-1-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="kn">from</span><span class="w"> </span><span class="nn">snow.lodispp.pp_io</span><span class="w"> </span><span class="kn">import</span> <span class="n">write_xyz</span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="kn">from</span><span class="w"> </span><span class="nn">snow.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">write_xyz</span>
 </span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a>
 </span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="n">agcn</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># (1)!</span>
 </span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a>
