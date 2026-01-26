@@ -486,6 +486,72 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Building Things
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Building Things
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../add_molecule/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adding Molecules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -988,7 +1054,7 @@
 </div>
 </div>
 </div>
-<p>Note that pySNOW b default requires a version of python &gt;= 3.12, however users can optionally try to change this in the <strong>pyproject.toml</strong> file, this however has not been tried and might result in unwanted behaviour.</p>
+<p>Note that pySNOW b default requires a version of python &gt;= 3.9, however users can optionally try to change this in the <strong>pyproject.toml</strong> file, this however has not been tried and might result in unwanted behaviour. Going below python 3 is sure to cause issues due to syntax differences.</p>
 <p>After creating and activating the virtual environment you can clone the repository (or download the code as a zip and uncompressing it in any deisred location):</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/nanoMLMS/pySNOW.git<span class="w"> </span>pysnow<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>pysnow
 </span></code></pre></div>
@@ -1002,6 +1068,7 @@ from the pysnow folder.</p>
 <p>Requirments for pYSNOW are <a href="https://numpy.org/">NumPy</a> and <a href="https://scipy.org/">SciPy</a>, which are automatically installed with pySNOW, additional optional dependencies are:</p>
 <ul>
 <li><a href="https://tqdm.github.io/">tqdm</a> for progress bars to check progress of long computations</li>
+<li><a href="https://ase-lib.org/">ase</a> for advanced input/output and exploitation of functions implemented there (note that ase is based on classes encapsulating structures rather than simple arrays)</li>
 </ul>
 
 
