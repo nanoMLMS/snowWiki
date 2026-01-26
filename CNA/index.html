@@ -443,7 +443,25 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Computing the pair CNA Signature">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computing-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Computing patterns
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computing-patterns_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Computing patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Computing patterns">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1022,7 +1040,25 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Computing the pair CNA Signature">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computing-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Computing patterns
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computing-patterns_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Computing patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Computing patterns">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1148,6 +1184,18 @@
 </div>
 </div>
 </div>
+<h2 id="computing-patterns">Computing patterns</h2>
+<h2 id="computing-patterns_1">Computing patterns</h2>
+<p>An easier structural descriptor to analyze is provided by <strong>CNA patterns (CNAps)</strong>, which are <strong>single-particle properties</strong> obtained by enumerating the CNA signatures in which a given particle participates.</p>
+<p>For example, a particle with 12 nearest neighbors participates in 12 CNA signatures. The <em>type</em> of these signatures provides direct information about the local symmetry and structural environment. In an ideal FCC crystal, all 12 signatures are of type <code>(421)</code>, whereas an icosahedral center is characterized by 12 <code>(555)</code> signatures.</p>
+<p>We denote a CNA pattern as a list whose elements consist of the number of occurrences followed by the corresponding signature. In the simple cases above, these would be written as:</p>
+<ul>
+<li><code>(12, (421))</code> for an FCC atom  </li>
+<li><code>(12, (555))</code> for an icosahedral center  </li>
+</ul>
+<p>More complex local environments give rise to mixed patterns. For instance, an atom lying on a five-fold symmetry axis is identified by the pattern:
+- <code>[(10, (422)), (2, (555))]</code>
+indicating participation in ten <code>(422)</code> signatures and two <code>(555)</code> signatures.</p>
 <p>CNAPs are described in the following table, also available in the readme of the library:</p>
 <h4 id="cnap-index-descriptions"><strong>CNAp Index Descriptions</strong></h4>
 <table>
@@ -1246,6 +1294,27 @@
 </tr>
 </tbody>
 </table>
+<p>To compute the patterns there are two functions implemented in pysnow, one computes the patterns explicitly, producing a list of tuples (signatures, count) for all atoms, useful for an overall statistic of the patterns, the other computes the pattern nternally and then returns a list of integers as those in table above for a more strightforward identification of known structures, also useful for visualization purposes.</p>
+<p>Both functions only require the coordinates of the atoms and a cutoff distance for the identification of nearest neighbours.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Using pySNOW io</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><div class="language-py highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">5</a></span>
+<span class="normal"><a href="#__codelineno-3-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">snow.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_xyz</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">snow.descriptor.cna</span><span class="w"> </span><span class="kn">import</span> <span class="n">calculate_cna</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="n">el</span><span class="p">,</span> <span class="n">coords</span> <span class="o">=</span> <span class="n">read_xyz</span><span class="p">(</span><span class="s2">&quot;Au976To.xyz&quot;</span><span class="p">)</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="n">cut_off</span> <span class="o">=</span> <span class="mf">4.079</span> <span class="o">*</span> <span class="mf">0.85</span> <span class="c1"># (1)</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="n">cnap_indeces</span> <span class="o">=</span> <span class="n">cnap_peratom</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">cut_off</span><span class="p">,</span> <span class="n">display_progress</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="c1"># (1)</span>
+</span></code></pre></div></td></tr></table></div>
+1. If tqdm is installed you can opt to display a progress bar with display_progress = True</p>
+</div>
+</div>
+</div>
 <p>Ovito users can also make use of our Ovito modifier <a href="https://github.com/nanoMLMS/CNAPatternerOvito/">CNAPatterner</a> which provides a similar kind of analysis. While Ovito pipelines are generally tricky to deal with in python, using it is advisable when treating with larger systems and/or systems with periodic boundary conditions.</p>
 
 
