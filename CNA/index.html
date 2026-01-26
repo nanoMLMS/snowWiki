@@ -1305,7 +1305,7 @@ indicating participation in ten <code>(422)</code> signatures and two <code>(555
 <span class="normal"><a href="#__codelineno-3-4">4</a></span>
 <span class="normal"><a href="#__codelineno-3-5">5</a></span>
 <span class="normal"><a href="#__codelineno-3-6">6</a></span>
-<span class="normal"><a href="#__codelineno-3-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">snow.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_xyz</span>
+<span class="normal"><a href="#__codelineno-3-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">snow.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_xyz</span><span class="p">,</span> <span class="n">write_xyz</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">snow.descriptors.cna</span><span class="w"> </span><span class="kn">import</span> <span class="n">cnap_peratom</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="n">el</span><span class="p">,</span> <span class="n">coords</span> <span class="o">=</span> <span class="n">read_xyz</span><span class="p">(</span><span class="s2">&quot;Au976To.xyz&quot;</span><span class="p">)</span>
@@ -1320,6 +1320,8 @@ indicating participation in ten <code>(422)</code> signatures and two <code>(555
 </div>
 </div>
 </div>
+<p>After computation of the CNAPs for all atoms the resulting structure, saved to xyz with an additionl column for the CNAPs can be visualized in Ovito</p>
+<p><img align="center" alt="Image title" src="assets/au976to_cnap.png" /></p>
 <p>Ovito users can also make use of our Ovito modifier <a href="https://github.com/nanoMLMS/CNAPatternerOvito/">CNAPatterner</a> which provides a similar kind of analysis. While Ovito pipelines are generally tricky to deal with in python, using it is advisable when treating with larger systems and/or systems with periodic boundary conditions.</p>
 
 
