@@ -1299,19 +1299,24 @@ indicating participation in ten <code>(422)</code> signatures and two <code>(555
 <div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Using pySNOW io</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><div class="language-py highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<div class="language-py highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">2</a></span>
 <span class="normal"><a href="#__codelineno-3-3">3</a></span>
 <span class="normal"><a href="#__codelineno-3-4">4</a></span>
 <span class="normal"><a href="#__codelineno-3-5">5</a></span>
-<span class="normal"><a href="#__codelineno-3-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">snow.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_xyz</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">snow.descriptor.cna</span><span class="w"> </span><span class="kn">import</span> <span class="n">calculate_cna</span>
+<span class="normal"><a href="#__codelineno-3-6">6</a></span>
+<span class="normal"><a href="#__codelineno-3-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">snow.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_xyz</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">snow.descriptors.cna</span><span class="w"> </span><span class="kn">import</span> <span class="n">cnap_peratom</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="n">el</span><span class="p">,</span> <span class="n">coords</span> <span class="o">=</span> <span class="n">read_xyz</span><span class="p">(</span><span class="s2">&quot;Au976To.xyz&quot;</span><span class="p">)</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="n">cut_off</span> <span class="o">=</span> <span class="mf">4.079</span> <span class="o">*</span> <span class="mf">0.85</span> <span class="c1"># (1)</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="n">cut_off</span> <span class="o">=</span> <span class="mf">4.079</span> <span class="o">*</span> <span class="mf">0.85</span> 
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="n">cnap_indeces</span> <span class="o">=</span> <span class="n">cnap_peratom</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">cut_off</span><span class="p">,</span> <span class="n">display_progress</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="c1"># (1)</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="n">write_xyz</span><span class="p">(</span><span class="s2">&quot;Au976To _cnap.xyz&quot;</span><span class="p">,</span> <span class="n">el</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">additional_data</span> <span class="o">=</span> <span class="n">cnap_indeces</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># (2)</span>
 </span></code></pre></div></td></tr></table></div>
-1. If tqdm is installed you can opt to display a progress bar with display_progress = True</p>
+<ol>
+<li>If tqdm is installed you can opt to display a progress bar with display_progress = True</li>
+<li>A bit annoying but the write_xyz of snow is a bit dumb, it requires some reshaping</li>
+</ol>
 </div>
 </div>
 </div>
