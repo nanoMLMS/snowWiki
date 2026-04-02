@@ -24,8 +24,8 @@ specifying both will favour bin_precision as it is the dirst to be considered in
 In this snippet we will compute the PDDF for a 561 atoms large cluster of gold atoms.
 
 ```py title="pddf.py" linenums="1"
-from snow.lodispp.pp_io import read_xyz
-from snow.lodispp.utils import pddf_calculator
+from snow.io import read_xyz
+from snow.descriptors.distributions import pddf_calculator
 import matplotlib.pyplot as plt
 # read a structure from an xyz file to a list of elements
 # and array of coordinates
@@ -51,8 +51,8 @@ The study of nano alloys might require to know how atoms of a specific element c
 In this example we shall study a gold-platinum alloy, we compute the partial PDDF for both gold and platinum and for the whole system then we plot it.
 
 ```py title="partial_pddf.py" linenums="1"
-from snow.lodispp.pp_io import read_xyz
-from snow.lodispp.utils import pddf_calculator
+from snow.io import read_xyz
+from snow.descriptors.distributions import pddf_calculator
 import matplotlib.pyplot as plt
 # read a structure from an xyz file to a list of elements
 # and array of coordinates

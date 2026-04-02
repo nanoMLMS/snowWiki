@@ -21,15 +21,15 @@ The CNA calculator containes a series of functions for the comutation of the CAN
 
 
 
-::: snow.lodispp.cna.calculate_cna_fast
+::: snow.descriptors.cna.calculate_cna_fast
 
 ### Write CNA to file
 
-::: snow.lodispp.cna.write_cna
+::: snow.descriptors.cna.write_cna
 
 ### CNA Patterns per atoms
 
-::: snow.lodispp.cna.cna_peratom
+::: snow.descriptors.cna.cna_peratom
 
 ### CNAp Index per atom
 
@@ -38,4 +38,4 @@ Usage:
 cnap_peratom(index_frame: int, coords: np.ndarray, cut_off: float = None, pbc: bool = False) -> np.ndarray
 ```
 
-::: snow.lodispp.cna.cnap_peratom
+::: snow.descriptors.cna.cnap_peratom

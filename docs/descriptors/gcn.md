@@ -6,4 +6,4 @@ The GCN is a descriptor expanding on the better known Coordination Number (CN, t
 
 ## Functions
 
-::: snow.descriptors.gcn.agcn_calculator
+::: snow.descriptors.coordination.agcn_calculator

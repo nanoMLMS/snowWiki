@@ -27,8 +27,8 @@ The method to compute the CNA involves, as always, as a first step, the reading 
 === "Using pySNOW io"
 
     ```py linenums="1"
-    from snow.lodispp.pp_io import read_xyz
-    from snow.lodispp.cna import calculate_cna
+    from snow.io import read_xyz
+    from snow.descriptor.cna import calculate_cna
 
     el, coords = read_xyz("Au976To.xyz")
     cut_off = 4.079 * 0.85 # (1)
@@ -42,7 +42,7 @@ The method to compute the CNA involves, as always, as a first step, the reading 
 
     ```py linenums="1"
     from ase.io import read
-    from snow.lodispp.cna import calculate_cna
+    from snow.descriptors.cna import calculate_cna
 
     nano = read("Au976To.xyz")
 
@@ -60,7 +60,7 @@ The method to compute the CNA involves, as always, as a first step, the reading 
     ```py linenums="1"
     from from ovito.io import import_file
 
-    from snow.lodispp.cna import calculate_cna
+    from snow.descriptors.cna import calculate_cna
 
     pipeline = import_file("Au976To.xyz")
 
@@ -72,6 +72,25 @@ The method to compute the CNA involves, as always, as a first step, the reading 
 
     1. Cutoff as 0.85*lattice parameter
     2. The first 1 is the index_frame placeholder. Setting *return_pair* to **True** will return the indeces of the atoms forming each pair
+
+
+## Computing patterns
+
+## Computing patterns
+
+An easier structural descriptor to analyze is provided by **CNA patterns (CNAps)**, which are **single-particle properties** obtained by enumerating the CNA signatures in which a given particle participates.
+
+For example, a particle with 12 nearest neighbors participates in 12 CNA signatures. The *type* of these signatures provides direct information about the local symmetry and structural environment. In an ideal FCC crystal, all 12 signatures are of type `(421)`, whereas an icosahedral center is characterized by 12 `(555)` signatures.
+
+We denote a CNA pattern as a list whose elements consist of the number of occurrences followed by the corresponding signature. In the simple cases above, these would be written as:
+
+- `(12, (421))` for an FCC atom  
+- `(12, (555))` for an icosahedral center  
+
+More complex local environments give rise to mixed patterns. For instance, an atom lying on a five-fold symmetry axis is identified by the pattern:
+- `[(10, (422)), (2, (555))]`
+indicating participation in ten `(422)` signatures and two `(555)` signatures.
+
 
 CNAPs are described in the following table, also available in the readme of the library:
 
@@ -95,5 +114,31 @@ CNAPs are described in the following table, also available in the readme of the 
 | 14       | Five-fold vertex                                     |[(5, (322)), (1, (555))] |
 | 15       | (111) face                                           |[(6, (311)), (3, (421))] |
 | 16       | Twinning plane                                       |[(6, (421)), (6, (422))] |
+| 19       | Reentrance in (100) facet                            |[(4, (311)), (7, (421))] |
+
+
+To compute the patterns there are two functions implemented in pysnow, one computes the patterns explicitly, producing a list of tuples (signatures, count) for all atoms, useful for an overall statistic of the patterns, the other computes the pattern nternally and then returns a list of integers as those in table above for a more strightforward identification of known structures, also useful for visualization purposes.
+
+Both functions only require the coordinates of the atoms and a cutoff distance for the identification of nearest neighbours.
+
+=== "Using pySNOW io"
+
+    ```py linenums="1"
+    from snow.io import read_xyz, write_xyz
+    from snow.descriptors.cna import cnap_peratom
+
+    el, coords = read_xyz("Au976To.xyz")
+    cut_off = 4.079 * 0.85 
+    cnap_indeces = cnap_peratom(1, coords, cut_off, display_progress = True) # (1)
+    write_xyz("Au976To_cnap.xyz", el, coords, additional_data = cnap_indeces.reshape(-1,1)) # (2)
+    ```
+
+    1. If tqdm is installed you can opt to display a progress bar with display_progress = True
+    2. A bit annoying but the write_xyz of snow is a bit dumb, it requires some reshaping
+
+After computation of the CNAPs for all atoms the resulting structure, saved to xyz with an additionl column for the CNAPs can be visualized in Ovito
+
+![Image title](assets/au976cnap.png){ align=center }
+
 
 Ovito users can also make use of our Ovito modifier [CNAPatterner](https://github.com/nanoMLMS/CNAPatternerOvito/) which provides a similar kind of analysis. While Ovito pipelines are generally tricky to deal with in python, using it is advisable when treating with larger systems and/or systems with periodic boundary conditions.

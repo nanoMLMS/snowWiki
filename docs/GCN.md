@@ -16,8 +16,8 @@ where $CN_{max}$ is the maximal CN for an atom in the bulk, for instance, in the
 The equation presented above is for the **atop GCN**, that is the GCN for an adsorption site corresponding to the atom itself, to compute such value in pySNOW we first need to load a structure from a coordinate file, here we will use the builtin function to read from an XYZ file, however any library that can read or generate coordinates for an atomic structure can be used to prepare the coordinate array required by the code.
 
 ```py title="agcn.py" linenums="1"
-from snow.lodispp.pp_io import read_xyz
-from snow.descriptors.gcn import agcn_calculator
+from snow.io import read_xyz
+from snow.descriptors.coordination import agcn_calculator
 
 # read a structure from an xyz file to a list of elements
 # and array of coordinates
@@ -36,7 +36,7 @@ and potentially be used inlater version to automate anlysis of a trajectory
 Once the agcn for each atom has been computed the array can be saved as the extra column of an extended XYZ for visual representation using a software such as [Ovito](https://www.ovito.org/ "Get the best viz tool!") using the builtin function that allows users to write coordinates and any additional per-atom data to an XYZ file.
 
 ```py title="agcn.py" linenums="13"
-from snow.lodispp.pp_io import write_xyz
+from snow.io import write_xyz
 
 agcn.reshape(-1, 1) # (1)!
 
